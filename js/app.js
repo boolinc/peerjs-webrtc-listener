@@ -1,7 +1,11 @@
 $(function () {
     'use strict';
 
-    var peer = new Peer({ key: 'evycxpu0zuissjor' });
+    var peer = new Peer({
+        host: 'api.tandembox.co',
+        port: 80,
+        path: '/peer'
+    });
 
     peer.on('open', function (id) {
         $('h1').html('Hi ' + id + ' :)');
@@ -14,6 +18,7 @@ $(function () {
             var audio = new Audio();
             audio.src = streamUrl;
             audio.play();
+            console.log('Playing %s', streamUrl);
         });
         call.answer();
     });
